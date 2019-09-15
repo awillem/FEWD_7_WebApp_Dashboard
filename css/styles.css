@@ -1,0 +1,416 @@
+* {
+  box-sizing: border-box;
+}
+body {
+  font-family: 'Noto Sans', sans-serif;
+  margin: 0;
+}
+.main-container {
+  height: 100vh;
+  display: grid;
+  grid-template-columns: 80px 1fr;
+  grid-template-rows: 85px 1fr;
+  grid-template-areas: 
+  "header header"
+  "nav main"
+}
+
+header {
+  grid-area: header;
+  background: blueviolet;
+  color: white;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  /* position: relative; */
+}
+
+header h1 {
+  font-size: 1.5rem;
+  color: #fff;
+  text-align: center;
+  margin: 0;
+  text-align: center;
+  vertical-align: middle;
+  margin-left: 20px;
+  
+  /* position: absolute;
+  top: 50%;
+  transform: translate(0, -50%); */
+}
+
+header h1 span:first-of-type {
+  font-family: 'Dancing Script', cursive;
+  font-size: 1.25em;
+  font-weight: 600;
+  letter-spacing: .2rem;
+  color: #fff;
+}
+
+header h1 span:nth-of-type(2) {
+  color: #bbb;
+  font-size: 1.05rem;
+}
+
+
+
+header svg {
+  width: 40px;
+  display: inline-block;
+  margin-left: auto; 
+  margin-right: 10px;
+  padding-right: 10px;
+  border-right: 1px solid rgb(75, 20, 126); 
+}
+
+header img {
+  border-radius: 50%;
+  width: 85%;
+  padding: 10px;
+}
+
+header .profile_img {
+  width: 75px;
+}
+
+header h3 {
+  padding-right: 20px;
+  font-size: 1rem;
+}
+
+nav {
+  grid-area: nav;
+  background: dimgray;
+  /* color: white; */
+}
+
+
+
+nav svg {
+  display: block;
+  width: 50%;
+  margin: 0 auto;
+  
+}
+
+nav svg .path {
+  fill: #ccc;
+}
+nav a {
+  display: inline-block;
+  width: 100%;
+  height: auto;
+  border-radius: 5px;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  margin-bottom:  25px;
+}
+
+nav a:first-of-type {
+  margin-top: 25px;
+}
+
+nav a.active svg .path {
+  fill: #fff;  
+}
+
+nav a.active {
+  border-left: 5px white solid;
+}
+
+main {
+  grid-area: main;
+  background: #fafafa;
+  display: grid;
+  grid-template-columns:  repeat(6, minmax(150px, auto));
+  grid-template-rows: 60px auto min(200px, auto);
+  grid-template-areas: 
+  "tab search search search search search"
+  "alert alert alert alert alert alert"
+  "traffic traffic traffic traffic traffic traffic"
+  "daily daily daily mobile mobile mobile"
+  "social social social social social social"
+  "sales sales sales review review review"
+  "message message message settings settings settings";
+}
+
+.tab {
+  grid-area: tab;
+  text-align: center;
+}
+
+.tab h2 {
+  line-height: 2;
+}
+
+.search {
+  grid-area: search;
+  border-left: 1px #cacaca solid;
+  border-bottom: 1px #cacaca solid;
+  background: #f2f2f2;
+  display: flex;
+  align-items: center;
+}
+
+.search input {
+  margin-left: auto;
+  width: 300px;
+  height: 50%;
+  margin-right: 20px;
+  border-radius: 5px;
+  padding: 5px 5px 5px 10px;
+  font-size: 1rem;
+}
+
+.alert {
+  grid-area: alert;
+  width: 100%;
+  /* margin: 15px auto 0; */
+  /* background: green; */
+  color: #eee;
+}
+
+.alert div {
+  width: 90%; 
+  /* display: block; */
+  margin: 10px auto 0;
+  background: blue;
+  border-radius: 5px;
+}
+
+.alert p {
+  color: #ccc;
+  font-size: .9em;
+  padding: 9px 20px;
+}
+
+.alert span {
+  color: #fff;
+  font-size: 1em;
+  padding-right: 10px;
+}
+
+.alert span:last-of-type {
+  float: right;
+}
+
+.alert .close {
+  cursor: pointer;
+}
+
+.main-chart {
+  grid-area: traffic;
+padding: 20px;
+}
+
+.main-chart h5 {
+  font-size: 1.15rem;
+  color: #777;
+  display: inline-block;
+  margin: 10px 0 10px 10px;
+}
+
+.main-chart nav {
+  float: right;
+  background: #fafafa;
+  margin-right: 25px;
+}
+
+.main-chart li {
+  text-decoration: none;
+  display: inline-block;
+  color: #777;
+  margin: 0 12px;  
+  padding: 3px 10px;
+}
+
+.main-chart li.active {
+  background: blue;
+  border-radius: 15px;
+  color: #eee;
+}
+
+/* .main-chart canvas {
+  width: 100%;
+  height: 400px !important;
+} */
+
+.daily-chart {
+  grid-area: daily;
+  border-top: 1px #ccc solid;
+  border-right: 1px #ccc solid;
+  border-bottom: 1px #ccc solid;
+  padding: 10px;
+}
+
+
+.mobile-chart {
+  grid-area: mobile;
+  padding: 10px;
+  border-top: 1px #ccc solid;
+  border-bottom: 1px #ccc solid;
+
+}
+.social {
+  grid-area: social;
+  
+}
+
+.cards {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.social-card {
+  display: inline-block;
+  margin: 15px;
+  border-radius: 5px;
+  flex-wrap: wrap;
+  flex: 1 33%;
+}
+
+
+
+.twitter {
+  grid-area: twitter;
+}
+
+.facebook {
+  grid-area: facebook;
+}
+
+.google {
+  grid-area: google;
+}
+.social-card{
+  background: lightgray;
+  display: flex;
+  align-items: center;
+  padding: 15px;
+}
+.social-card .social-img {
+  background: dimgray;
+  /* border: 2px black solid; */
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+  /* padding: 10px; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.twt, .ggl, .fb {
+  fill: white;
+  font-size: 1rem;
+}
+.social-card svg {
+  display: inline-block;
+  margin: auto;
+}
+
+.social-card .stats {
+  margin-left: 18px;
+}
+
+.social-card h4 {
+  font-size: .9rem;
+  margin: 0;
+}
+
+.social-card h2 {
+  margin: 0;
+}
+
+.recent-sales, 
+.recent-reviews {
+  grid-area: sales;
+  display: flex;
+  flex-direction: column;
+  border: 1px lightgray solid;
+  border-left: none;
+  padding: 20px;
+}
+
+.recent-reviews {
+  border-right: none;
+  margin-left: 0;
+}
+
+.recent-sales h5,
+.recent-reviews h5 {
+  margin: 0;
+  margin-bottom: 8px;
+}
+
+.sales,
+.reviews {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  padding: 5px;
+  /* margin-left: 15px; */
+  border-bottom: 1px rgb(225, 225, 225) solid;
+}
+
+
+
+.sales:last-child,
+.reviews:last-child {
+  border-bottom: none;
+}
+
+.sales div:first-child,
+.reviews div:first-child {
+  width: 10%;
+  margin-right: 20px;
+}
+
+.sales div:last-child,
+.reviews div:last-child {
+  margin-left: auto;
+  margin-right: 20px;
+}
+
+.reviews div:last-child {
+  font-size: 1.75rem;
+  color: gray;
+}
+
+.sales img,
+.reviews img {
+  width: 100%;
+  border-radius: 50%;
+}
+
+
+
+.sales div h4,
+.reviews div h4 {
+  font-size: 1rem;
+  margin: 0;
+}
+
+.sales div h5,
+.reviews div h5 {
+  font-size: .9rem;
+  color: peru;
+  margin: 0;
+}
+
+.reviews div h5 {
+  color: dimgrey;
+}
+
+.recent-reviews {
+  grid-area: review;
+}
+
+.message {
+  grid-area: message;
+}
+
+.settings {
+  grid-area: settings;
+}
