@@ -1,3 +1,14 @@
+/* Colors
+Dark Grey - #45454D
+Hot Pink - #ff4893
+Light Pink - #ffd5d5
+Cream - #fff1e9
+light light grey - #fafafa;
+slightly darker light grey = #f2f2f2;
+section title grey - #777
+*/
+
+
 * {
   box-sizing: border-box;
 }
@@ -17,7 +28,7 @@ body {
 
 header {
   grid-area: header;
-  background: blueviolet;
+  background: #ff4893;
   color: white;
   display: flex;
   align-items: center;
@@ -61,7 +72,36 @@ header svg {
   margin-right: 10px;
   padding-right: 10px;
   border-right: 1px solid rgb(75, 20, 126); 
+  /* transition: fill 5s; */
+  
 }
+
+header svg:hover {
+  animation: shake .2s, pulse 1s;
+  animation-iteration-count: infinite;
+}
+
+header svg .path {
+  transition: fill 1s;
+}
+
+header svg:hover .path {
+  fill: blue;
+}
+
+@keyframes shake {
+  0% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(5deg);
+  }
+  100% {
+    transform: rotate(-5deg);
+  }
+}
+
+
 
 header img {
   border-radius: 50%;
@@ -80,7 +120,7 @@ header h3 {
 
 nav {
   grid-area: nav;
-  background: dimgray;
+  background: #45454d;
   /* color: white; */
 }
 
@@ -94,7 +134,7 @@ nav svg {
 }
 
 nav svg .path {
-  fill: #ccc;
+  fill: #aaa;
 }
 nav a {
   display: inline-block;
@@ -121,8 +161,9 @@ nav a.active {
 main {
   grid-area: main;
   background: #fafafa;
+  margin-bottom: 25px;
   display: grid;
-  grid-template-columns:  repeat(6, minmax(150px, auto));
+  grid-template-columns:  repeat(6, minmax(150px, 1fr));
   grid-template-rows: 60px auto min(200px, auto);
   grid-template-areas: 
   "tab search search search search search"
@@ -137,6 +178,7 @@ main {
 .tab {
   grid-area: tab;
   text-align: center;
+  color: #45454d
 }
 
 .tab h2 {
@@ -150,6 +192,7 @@ main {
   background: #f2f2f2;
   display: flex;
   align-items: center;
+  border-bottom-left-radius: 5px
 }
 
 .search input {
@@ -174,18 +217,18 @@ main {
   width: 90%; 
   /* display: block; */
   margin: 10px auto 0;
-  background: blue;
+  background: #ffd5d5;
   border-radius: 5px;
 }
 
 .alert p {
-  color: #ccc;
+  color: #45454d;
   font-size: .9em;
   padding: 9px 20px;
 }
 
 .alert span {
-  color: #fff;
+  color: #777;
   font-size: 1em;
   padding-right: 10px;
 }
@@ -201,6 +244,11 @@ main {
 .main-chart {
   grid-area: traffic;
 padding: 20px;
+
+}
+
+h5 {
+  color: #777;
 }
 
 .main-chart h5 {
@@ -209,6 +257,9 @@ padding: 20px;
   display: inline-block;
   margin: 10px 0 10px 10px;
 }
+
+
+
 
 .main-chart nav {
   float: right;
@@ -221,19 +272,17 @@ padding: 20px;
   display: inline-block;
   color: #777;
   margin: 0 12px;  
-  padding: 3px 10px;
+  padding: 3px 10px;  
+  border-radius: 15px;
+  transition: all .5s ease-in-out;
 }
 
 .main-chart li.active {
-  background: blue;
-  border-radius: 15px;
-  color: #eee;
+  background: #ff4893;
+  color: #fafafa;
 }
 
-/* .main-chart canvas {
-  width: 100%;
-  height: 400px !important;
-} */
+
 
 .daily-chart {
   grid-area: daily;
@@ -284,7 +333,7 @@ padding: 20px;
   grid-area: google;
 }
 .social-card{
-  background: lightgray;
+  background: #ffd5d5;
   display: flex;
   align-items: center;
   padding: 15px;
@@ -324,7 +373,9 @@ padding: 20px;
 }
 
 .recent-sales, 
-.recent-reviews {
+.recent-reviews,
+.message-customer,
+.settings {
   grid-area: sales;
   display: flex;
   flex-direction: column;
@@ -395,7 +446,7 @@ padding: 20px;
 .sales div h5,
 .reviews div h5 {
   font-size: .9rem;
-  color: peru;
+  color: #777;
   margin: 0;
 }
 
@@ -407,10 +458,168 @@ padding: 20px;
   grid-area: review;
 }
 
-.message {
+.message-customer {
   grid-area: message;
+  border-right: 1px lightgrey solid;
 }
 
 .settings {
   grid-area: settings;
 }
+
+form {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  flex-wrap: wrap;
+  padding: 15px;
+  padding-top: 0;
+}
+
+button {
+  padding: 8px;
+  border-radius: 4px;
+  border: none;
+  color: #eee;
+  font-weight: bold;
+  width: 100%;
+  background: #ff4893;
+}
+
+.settings button {
+  width: 48%;  
+}
+
+.settings button:first-of-type {
+  margin-right: 4%;
+}
+
+form input, 
+form textarea {
+  border-radius: 5px;
+  border: 1px rgb(215,215,215) solid;
+  padding: 8px;
+  width: 100%;
+  margin: 8px 0;
+  background: rgb(240,240,240);
+}
+
+form textarea {
+  
+  height: 10vh;
+}
+
+
+
+.switch-div {
+  width: 100%;
+  margin: 12px;
+  color: #777;
+}
+
+.switch-div label:first-child {
+  width: 35%;
+  display: inline-block;
+}
+
+.switch-div span {
+  padding: 5px;
+  padding-left: 8px;
+  font-size: .75rem;
+  color: #eee;
+}
+input, textarea, select, button {
+  outline: none;
+}
+
+select {
+  border-radius: 5px;
+  width: 100%;
+  padding: 8px;
+  margin: 10px 0;
+  background: rgb(240,240,240);
+  outline: none;
+}
+
+select option:checked {
+  box-shadow: 0 0 10px 100px green !important;
+}
+
+
+
+
+
+/* The switch - the box around the slider */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 70px;
+  height: 28px;
+}
+
+/* Hide default HTML checkbox */
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* The slider */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 20px;
+  width: 20px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: #ff4893;
+}
+
+input:not(:checked) +.slider {
+  color: #ccc;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(42px);
+  -ms-transform: translateX(42px);
+  transform: translateX(42px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+
+
+
+/**************
+ MEDIA QUERIES
+**************/
+

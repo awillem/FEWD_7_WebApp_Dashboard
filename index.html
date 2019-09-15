@@ -17,7 +17,7 @@
       <h1><span>Whatever</span> <span>by Emma</span></h1>
       <!-- <div class="user"> -->
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
-        <path
+        <path class="path"
           d="M24 18v-8c0-5.5-4.5-10-10-10S4 4.5 4 10v8l-4 8h9.1c.5 2.3 2.5 4 4.9 4s4.4-1.7 4.9-4H28l-4-8zM14 28c-1.3 0-2.4-.8-2.8-2h5.6c-.4 1.2-1.5 2-2.8 2zM3 24l3-6v-8c0-4.4 3.6-8 8-8s8 3.6 8 8v8l3 6H3z"
           fill="#fff" />
       </svg>
@@ -87,6 +87,7 @@
           <h5>Sales</h5>
           <nav>
             <ul id="salesNav">
+              <li>Hourly</li>
               <li>Daily</li>
               <li class="active">Weekly</li>
               <li>Monthly</li>
@@ -153,7 +154,7 @@
             </div>
             <div class="stats">
               <h4>Google</h4>
-              <h2>56</h2>
+              <h2>506</h2>
             </div>
           </div>
         </div>
@@ -260,11 +261,70 @@
         <div>
           <h5>Message Customer</h5>
         </div>
+        <form>
+          <input placeholder="Search for Customer" name="customer" id="customer">
+          <textarea placeholder="Message for Customer" name="message" id="message"></textarea>
+          <button>SEND</button>
+        </form>
       </div>
+
+
       <div class="settings">
         <div>
           <h5>Settings</h5>
         </div>
+        <form>
+          <div class='switch-div'>
+            <label for="switch">Send Email Notifications</label>
+            <label class="switch">
+              <input type="checkbox">
+              <span class="slider round">ON</span>
+            </label>
+          </div>
+          <div class='switch-div'>
+            <label for="switch">Set Profile to Public</label>
+            <label class="switch">
+              <input type="checkbox">
+              <span class="slider round">ON</span>
+            </label>
+          </div>
+          <select name="timezone" id="timezone">
+            <option>GMT Greenwich Mean Time GMT</option>
+            <option>UTC Universal Coordinated Time GMT</option>
+            <option>ECT European Central Time GMT+1:00</option>
+            <option>EET Eastern European Time GMT+2:00</option>
+            <option>ART (Arabic) Egypt Standard Time GMT+2:00</option>
+            <option>EAT Eastern African Time GMT+3:00</option>
+            <option>MET Middle East Time GMT+3:30</option>
+            <option>NET Near East Time GMT+4:00</option>
+            <option>PLT Pakistan Lahore Time GMT+5:00</option>
+            <option>IST India Standard Time GMT+5:30</option>
+            <option>BST Bangladesh Standard Time GMT+6:00</option>
+            <option>VST Vietnam Standard Time GMT+7:00</option>
+            <option>CTT China Taiwan Time GMT+8:00</option>
+            <option>JST Japan Standard Time GMT+9:00</option>
+            <option>ACT Australia Central Time GMT+9:30</option>
+            <option>AET Australia Eastern Time GMT+10:00</option>
+            <option>SST Solomon Standard Time GMT+11:00</option>
+            <option>NST New Zealand Standard Time GMT+12:00</option>
+            <option>MIT Midway Islands Time GMT-11:00</option>
+            <option>HST Hawaii Standard Time GMT-10:00</option>
+            <option>AST Alaska Standard Time GMT-9:00</option>
+            <option>PST Pacific Standard Time GMT-8:00</option>
+            <option>PNT Phoenix Standard Time GMT-7:00</option>
+            <option>MST Mountain Standard Time GMT-7:00</option>
+            <option>CST Central Standard Time GMT-6:00</option>
+            <option>EST Eastern Standard Time GMT-5:00</option>
+            <option>IET Indiana Eastern Standard Time GMT-5:00</option>
+            <option>PRT Puerto Rico and US Virgin Islands Time GMT-4:00</option>
+            <option>CNT Canada Newfoundland Time GMT-3:30</option>
+            <option>AGT Argentina Standard Time GMT-3:00</option>
+            <option>BET Brazil Eastern Time GMT-3:00</option>
+            <option>CAT Central African Time GMT-1:00</option>
+          </select>
+          <button>SAVE</button>
+          <button>CANCEL</button>
+        </form>
       </div>
 
       <!-- new members and recent activity -->

@@ -9,7 +9,11 @@ const weeklySales = [3702, 3602, 4491, 2436, 4165, 4141, 3747, 3333, 3847];
 const days = ["Apr 17", "Apr 18", "Apr 19", "Apr 20", "Apr 21", "Apr 22", "Apr 23",
   "Apr 24", "Apr 25", "Apr 26", "Apr 27", "Apr 28", "Apr 29", "Apr 30"];
 
-const dailySales = [740, 239, 755, 15, 72, 881, 835, 259, 274, 301, 761, 81, 93, 40];
+const dailySales = [740, 239, 755, 15, 72, 881, 835, 259, 274, 301, 761, 81, 93, 400];
+
+const hours = ["10am", "11am", "12pm", "1pm", "2pm", "3pm", "4pm", '5pm', '6pm'];
+
+const hourlySales = [0, 57, 25, 49, 10, 120, 78, 12, 49]
 
 var sales = document.getElementById('sales');
 var salesChart = new Chart(sales, {
@@ -31,6 +35,13 @@ var salesChart = new Chart(sales, {
   options: {
     legend: {
       display: false
+    },
+    tooltips: {
+      callbacks: {
+        label: function (tooltipItems, data) {
+          return '$' + tooltipItems.yLabel;
+        }
+      }
     },
     // maintainAspectRatio: false,
     responsive: true,
@@ -58,7 +69,13 @@ salesNav.addEventListener('click', e => {
     salesNavLi[i].className = "";
   }
   e.target.className = "active";
-  if (target === 'Daily') {
+  if (target === 'Hourly') {
+    salesChart.data.labels = 0;
+    salesChart.data.labels = [...hours];
+    salesChart.data.datasets.forEach((dataset) => {
+      dataset.data = [...hourlySales];
+    });
+  } else if (target === 'Daily') {
     salesChart.data.labels = 0;
     salesChart.data.labels = [...days];
     salesChart.data.datasets.forEach((dataset) => {
@@ -111,6 +128,13 @@ var dailyChart = new Chart(daily, {
   options: {
     legend: {
       display: false
+    },
+    tooltips: {
+      callbacks: {
+        label: function (tooltipItems, data) {
+          return '$' + tooltipItems.yLabel;
+        }
+      }
     },
     scales: {
       yAxes: [{
@@ -165,5 +189,27 @@ const alertDiv = document.querySelector('.alert');
 alertDiv.addEventListener('click', e => {
   if (e.target.className === 'close') {
     e.target.parentNode.style.display = 'none';
+  }
+});
+
+/*Nav - Change Active */
+const navDiv = document.querySelector('nav');
+const aTags = navDiv.querySelectorAll('a');
+navDiv.addEventListener('click', e => {
+  console.log(e.target)
+  if (!e.target in window) {
+    console.log('yes')
+  }
+  for (let i = 0; i < aTags.length; i++) {
+    aTags[i].classList.remove('active');
+  }
+  const targetClass = e.target.className;
+  if (targetClass.baseVal === 'icon' || targetClass === 'icon') {
+    e.target.classList.add('active');
+  } else if (targetClass.baseVal.includes('icon-')) {
+    console.log(e.target.parentNode)
+    e.target.parentNode.classList.add('active');
+  } else if (targetClass.baseVal === 'path') {
+    e.target.parentNode.parentNode.classList.add('active');
   }
 });
