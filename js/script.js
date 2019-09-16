@@ -372,9 +372,11 @@ save.addEventListener('click', e => {
 
 function settings() {
   let settings = JSON.parse(window.localStorage.getItem('settings'));
-  email.checked = settings.email;
-  profile.checked = settings.profile;
-  timeZone.value = settings.timeZone;
+  if (settings) {
+    email.checked = settings.email;
+    profile.checked = settings.profile;
+    timeZone.value = settings.timeZone;
+  }
 }
 
 cancel.addEventListener('click', e => {
