@@ -19,11 +19,11 @@ body {
 .main-container {
   height: 100vh;
   display: grid;
-  grid-template-columns: 80px 1fr;
-  grid-template-rows: 85px 1fr;
   grid-template-areas: 
-  "header header"
-  "nav main"
+  "header" 
+  "header"
+  "nav"
+  "main"
 }
 
 header {
@@ -31,9 +31,10 @@ header {
   background: #ff4893;
   color: white;
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   text-align: center;
-  /* position: relative; */
+  justify-content: center;
 }
 
 header h1 {
@@ -41,13 +42,7 @@ header h1 {
   color: #fff;
   text-align: center;
   margin: 0;
-  text-align: center;
-  vertical-align: middle;
-  margin-left: 20px;
-  
-  /* position: absolute;
-  top: 50%;
-  transform: translate(0, -50%); */
+  flex: 1 100%;  
 }
 
 header h1 span:first-of-type {
@@ -59,7 +54,7 @@ header h1 span:first-of-type {
 }
 
 header h1 span:nth-of-type(2) {
-  color: #bbb;
+  color: #45454d;
   font-size: 1.05rem;
 }
 
@@ -68,10 +63,9 @@ header h1 span:nth-of-type(2) {
 header svg {
   width: 40px;
   display: inline-block;
-  margin-left: auto; 
   margin-right: 10px;
   padding-right: 10px;
-  border-right: 1px solid rgb(75, 20, 126); 
+  border-right: 1px solid #fff; 
   /* transition: fill 5s; */
   
 }
@@ -79,6 +73,8 @@ header svg {
 header svg:hover {
   animation: shake .2s, pulse 1s;
   animation-iteration-count: infinite;
+  border-right: 1px solid transparent;
+  cursor: pointer;
 }
 
 header svg .path {
@@ -86,7 +82,7 @@ header svg .path {
 }
 
 header svg:hover .path {
-  fill: blue;
+  fill: #777;
 }
 
 @keyframes shake {
@@ -128,9 +124,13 @@ nav {
 
 nav svg {
   display: block;
-  width: 50%;
+  width: 40%;
   margin: 0 auto;
   
+}
+
+nav svg:hover {
+  cursor: pointer;
 }
 
 nav svg .path {
@@ -138,12 +138,17 @@ nav svg .path {
 }
 nav a {
   display: inline-block;
-  width: 100%;
+  width: 22%;
+  margin-right: 2.7%;
   height: auto;
   border-radius: 5px;
-  padding-top: 15px;
   padding-bottom: 15px;
-  margin-bottom:  25px;
+  border-bottom: 5px transparent solid;
+  transition: all .5s;
+}
+
+nav a:last-of-type {
+  margin-right: 0;
 }
 
 nav a:first-of-type {
@@ -155,7 +160,7 @@ nav a.active svg .path {
 }
 
 nav a.active {
-  border-left: 5px white solid;
+  border-bottom: 5px white solid;
 }
 
 main {
@@ -163,16 +168,18 @@ main {
   background: #fafafa;
   margin-bottom: 25px;
   display: grid;
-  grid-template-columns:  repeat(6, minmax(150px, 1fr));
-  grid-template-rows: 60px auto min(200px, auto);
   grid-template-areas: 
-  "tab search search search search search"
-  "alert alert alert alert alert alert"
-  "traffic traffic traffic traffic traffic traffic"
-  "daily daily daily mobile mobile mobile"
-  "social social social social social social"
-  "sales sales sales review review review"
-  "message message message settings settings settings";
+  "tab"
+  "search"
+  "alert"
+  "traffic"
+  "daily"
+  "mobile"
+  "social"
+  "sales"
+  "review"
+  "message"
+  "settings"
 }
 
 .tab {
@@ -181,25 +188,17 @@ main {
   color: #45454d
 }
 
-.tab h2 {
-  line-height: 2;
-}
-
 .search {
   grid-area: search;
   border-left: 1px #cacaca solid;
   border-bottom: 1px #cacaca solid;
-  background: #f2f2f2;
-  display: flex;
-  align-items: center;
-  border-bottom-left-radius: 5px
 }
 
 .search input {
-  margin-left: auto;
   width: 300px;
   height: 50%;
-  margin-right: 20px;
+  display: block;
+  margin: 0 auto 5px;
   border-radius: 5px;
   padding: 5px 5px 5px 10px;
   font-size: 1rem;
@@ -215,7 +214,6 @@ main {
 
 .alert div {
   width: 90%; 
-  /* display: block; */
   margin: 10px auto 0;
   background: #ffd5d5;
   border-radius: 5px;
@@ -256,22 +254,26 @@ h5 {
   color: #777;
   display: inline-block;
   margin: 10px 0 10px 10px;
+  width: 100%;
 }
 
-
-
-
 .main-chart nav {
-  float: right;
+  /* float: right; */
   background: #fafafa;
-  margin-right: 25px;
+  /* margin-right: 25px; */
+  display: inline-block;
+  margin-left: auto;
+}
+
+.main-chart ul {
+  padding: 0;
 }
 
 .main-chart li {
   text-decoration: none;
   display: inline-block;
   color: #777;
-  margin: 0 12px;  
+  margin: 0 1px;  
   padding: 3px 10px;  
   border-radius: 15px;
   transition: all .5s ease-in-out;
@@ -282,12 +284,15 @@ h5 {
   color: #fafafa;
 }
 
+.main-chart li:hover {
+  cursor: pointer;
+}
+
 
 
 .daily-chart {
   grid-area: daily;
-  border-top: 1px #ccc solid;
-  border-right: 1px #ccc solid;
+  border-top: 1px #ccc solid;  
   border-bottom: 1px #ccc solid;
   padding: 10px;
 }
@@ -300,26 +305,11 @@ h5 {
   border-bottom: 1px #ccc solid;
 
 }
+
 .social {
   grid-area: social;
   
 }
-
-.cards {
-  display: flex;
-  justify-content: space-between;
-  width: 100%;
-}
-
-.social-card {
-  display: inline-block;
-  margin: 15px;
-  border-radius: 5px;
-  flex-wrap: wrap;
-  flex: 1 33%;
-}
-
-
 
 .twitter {
   grid-area: twitter;
@@ -332,19 +322,38 @@ h5 {
 .google {
   grid-area: google;
 }
-.social-card{
+
+
+.cards {
+  display: flex;
+  justify-content: space-around;
+  width: 90%;
+  margin: 0 auto;
+}
+
+.social-card:hover {
+  box-shadow: 1px 1px 4px 4px grey;
+}
+
+.social-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 15px;
+  border-radius: 5px;
+  flex-wrap: wrap;
+  flex: 1 33%;
+  transition: .4s;
   background: #ffd5d5;
   display: flex;
   align-items: center;
-  padding: 15px;
+  padding: 5px;
 }
 .social-card .social-img {
   background: dimgray;
-  /* border: 2px black solid; */
   width: 55px;
   height: 55px;
   border-radius: 50%;
-  /* padding: 10px; */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -359,9 +368,7 @@ h5 {
   margin: auto;
 }
 
-.social-card .stats {
-  margin-left: 18px;
-}
+
 
 .social-card h4 {
   font-size: .9rem;
@@ -384,6 +391,8 @@ h5 {
   padding: 20px;
 }
 
+
+
 .recent-reviews {
   border-right: none;
   margin-left: 0;
@@ -403,6 +412,12 @@ h5 {
   padding: 5px;
   /* margin-left: 15px; */
   border-bottom: 1px rgb(225, 225, 225) solid;
+  transition: .4s;
+}
+
+.sales:hover, 
+.reviews:hover {
+  background: #fff1e9
 }
 
 
@@ -509,6 +524,12 @@ form textarea {
   height: 10vh;
 }
 
+.recent-sales, 
+.message-customer,
+.settings {
+  border-right: none;
+}
+
 
 
 .switch-div {
@@ -518,7 +539,8 @@ form textarea {
 }
 
 .switch-div label:first-child {
-  width: 35%;
+  width: 100%;
+  padding-bottom: 8px;
   display: inline-block;
 }
 
@@ -528,8 +550,21 @@ form textarea {
   font-size: .75rem;
   color: #eee;
 }
+
+
+
 input, textarea, select, button {
   outline: none;
+  transition: .4s;
+}
+
+input:hover, textarea:hover, select:hover, button:hover,
+input:focus, textarea:focus, select:focus, button:focus {
+  box-shadow: 1px 1px 4px 2px #777;
+}
+
+button:active {
+  background: #ff4894a2;
 }
 
 select {
@@ -544,6 +579,8 @@ select {
 select option:checked {
   box-shadow: 0 0 10px 100px green !important;
 }
+
+
 
 
 
@@ -590,7 +627,7 @@ select option:checked {
 }
 
 input:checked + .slider {
-  background-color: #ff4893;
+  background: #ff4893;
 }
 
 input:not(:checked) +.slider {
@@ -622,4 +659,168 @@ input:checked + .slider:before {
 /**************
  MEDIA QUERIES
 **************/
+
+@media (min-width: 768px) {
+  .main-container {
+    grid-template-columns: 80px 1fr;
+    grid-template-rows: 85px 1fr;
+    grid-template-areas: 
+    "header header"
+    "nav main"
+  }
+
+  header {
+    flex-wrap: none;
+  }
+  
+  header h1 {
+    flex: none;
+    margin-left: 20px;
+  }
+  
+  header svg {  
+  margin-left: auto; 
+  }
+  nav svg {
+    width: 50%;    
+  }  
+
+   nav a {
+    width: 100%;
+    margin-right: 0;
+    border-bottom: none;
+    border-left: 5px transparent solid;
+    padding-top: 15px;  
+    margin-bottom:  25px;
+  }
+
+  nav a:last-of-type {
+    margin-right: 0;
+  } 
+  
+  nav a.active {
+  border-left: 5px white solid;
+  border-bottom: none;
+}
+
+main {
+   grid-template-columns:  repeat(6, minmax(150px, 1fr));
+  grid-template-rows: 60px auto min(200px, auto);
+  grid-template-areas: 
+  "tab search search search search search"
+  "alert alert alert alert alert alert"
+  "traffic traffic traffic traffic traffic traffic"
+  "daily daily daily mobile mobile mobile"
+  "social social social social social social"
+  "sales sales sales review review review"
+  "message message message settings settings settings";
+}
+ 
+.search {
+  display: flex;
+  align-items: center;
+  border-bottom-left-radius: 5px;
+  
+  background: #f2f2f2;
+}
+
+.search input {
+  display: inline-block;
+  margin-left: auto;
+  margin-right: 20px;
+}
+
+/* .main-chart nav {
+  margin-right: 25px;
+} */
+
+/* .main-chart h5 {
+
+} */
+
+.main-chart nav  {
+  float: right;
+  margin-right: 25px;
+}
+
+
+
+.main-chart li {
+  margin: 0 12px;
+}
+
+.social-card .stats {
+  margin-left: 18px;
+}
+
+.social-card {
+  flex-direction: row;
+  padding: 10px;
+}
+
+.daily-chart {
+  border-right: 1px #ccc solid;
+}
+
+.recent-sales, 
+.message-customer,
+.settings {
+  border-right: 1px lightgrey solid;
+}
+.switch-div label:first-child {
+  width: 55%;
+  padding-bottom: 0;
+  display: inline-block;
+}
+
+
+}
+
+@media (min-width: 1024px) {
+  .main-chart {
+    width: 1024px;
+    margin: 0 auto;
+  }
+
+ 
+  
+
+}
+
+
+
+@media (min-width: 1200px ) {
+  .social-card .stats {
+    width: 60%;
+  }
+  .social-card .stats h4,
+  .social-card .stats h2{
+    display: inline-block;
+    width: fit-content;
+  }
+
+  .social-card .stats h4 {
+    
+    font-size: 1.1rem;
+    width: fit-content;
+  }
+  .social-card .stats h2 {
+    float: right;
+  }
+  /* .social-card .stats h4 {
+    margin-left: 15%;
+    font-size: 1.5rem;
+  } */
+}
+
+@media (min-width: 1500px) {
+  .social-card .stats h4 {
+    margin-left: 15%;
+    font-size: 1.5rem;
+  }
+}
+
+
+
+
 
