@@ -379,6 +379,8 @@ save.addEventListener('click', e => {
   settings.profile = profile.checked;
   settings.timeZone = timeZone.value;
   window.localStorage.setItem('settings', JSON.stringify(settings));
+  modal.classList.add('open');
+  modalMessage.innerHTML = `<p>Settings saved</p>`
 });
 
 function settings() {
