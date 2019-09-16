@@ -774,7 +774,7 @@ input:checked + .slider:before {
   }
 
   header {
-    flex-wrap: none;
+    flex-wrap:initial;
   }
   
   header h1 {
@@ -809,7 +809,7 @@ input:checked + .slider:before {
 
 main {
    grid-template-columns:  repeat(6, minmax(150px, 1fr));
-  grid-template-rows: 60px auto min(200px, auto);
+  grid-template-rows: 60px 1fr minmax(200px, auto);
   grid-template-areas: 
   "tab search search search search search"
   "alert alert alert alert alert alert"

@@ -17,7 +17,7 @@ const dailySales = [740, 239, 755, 15, 72, 881, 835, 259, 274, 301, 761, 81, 93,
 
 const hours = ["10am", "11am", "12pm", "1pm", "2pm", "3pm", "4pm", '5pm', '6pm'];
 
-const hourlySales = [0, 57, 25, 49, 10, 120, 78, 12, 49]
+const hourlySales = [0, 57, 25, 49, 10, 120, 78, 12, 49];
 
 var sales = document.getElementById('sales');
 var salesChart = new Chart(sales, {
@@ -33,7 +33,7 @@ var salesChart = new Chart(sales, {
         'rgba(72, 239, 255, 1)'
       ],
       borderWidth: 1,
-      lineTension: .2
+      lineTension: 0.2
     }]
   },
   options: {
@@ -202,10 +202,6 @@ alertDiv.addEventListener('click', e => {
 const navDiv = document.querySelector('nav');
 const aTags = navDiv.querySelectorAll('a');
 navDiv.addEventListener('click', e => {
-  console.log(e.target)
-  if (!e.target in window) {
-    console.log('yes')
-  }
   for (let i = 0; i < aTags.length; i++) {
     aTags[i].classList.remove('active');
   }
@@ -213,7 +209,6 @@ navDiv.addEventListener('click', e => {
   if (targetClass.baseVal === 'icon' || targetClass === 'icon') {
     e.target.classList.add('active');
   } else if (targetClass.baseVal.includes('icon-')) {
-    console.log(e.target.parentNode)
     e.target.parentNode.classList.add('active');
   } else if (targetClass.baseVal === 'path') {
     e.target.parentNode.parentNode.classList.add('active');
@@ -248,17 +243,12 @@ function validMessage() {
 messageForm.addEventListener('submit', e => {
   e.preventDefault();
   let flag = true;
-  console.log(validCustomer(), validMessage())
   if (!validCustomer()) {
     flag = false;
   }
   if (!validMessage()) {
     flag = false;
   }
-  console.log(flag)
-  // if (!validCustomer() || !validMessage()) {
-  //   flag = false;
-  // }
   if (flag) {
     modal.classList.add('open');
     modalMessage.innerHTML = `
@@ -267,9 +257,9 @@ messageForm.addEventListener('submit', e => {
     message.value = "";
     customer.value = "";
     message.className = "";
-    customer.className = ""
-    message.placeholder = "Message for Customer"
-    customer.placeholder = "Search for Customer"
+    customer.className = "";
+    message.placeholder = "Message for Customer";
+    customer.placeholder = "Search for Customer";
   }
 });
 
@@ -298,9 +288,9 @@ bell.addEventListener('click', e => {
 
 modal.addEventListener('click', e => {
   if (e.target.className === 'modal open' || e.target.className === 'close' || e.target.tagName === 'SPAN') {
-    closeModal()
+    closeModal();
   }
-})
+});
 
 document.addEventListener('keyup', e => {
   if (e.key === 'Escape') {
@@ -335,22 +325,20 @@ customer.addEventListener('keyup', e => {
   } else {
     let matched = [];
     names.forEach(name => {
-      console.log(name.toLowerCase(), customer.value.toLowerCase())
       if (name.toLowerCase().includes(customer.value.toLowerCase())) {
         matched.push(name);
       }
     });
     if (matched.length > 0) {
-      let list = ""
+      let list = "";
       matched.forEach(match => {
         list += `
           <li>${match}</li>
-        `
+        `;
       });
       autocomplete.innerHTML = list;
-      autocomplete.classList.add('active')
+      autocomplete.classList.add('active');
     }
-    console.log(matched);
   }
 });
 
@@ -360,7 +348,7 @@ autocomplete.addEventListener('click', e => {
     customer.value = e.target.innerText;
     autocomplete.classList.remove('active');
   }
-})
+});
 
 
 /*SETTINGS*/
@@ -370,7 +358,6 @@ const cancel = document.querySelector('.cancel');
 const email = document.querySelector('#email');
 const profile = document.querySelector('#profile');
 const timeZone = document.querySelector('#timezone');
-console.log(email.checked, profile.value, timeZone.value)
 
 save.addEventListener('click', e => {
   e.preventDefault();
@@ -380,7 +367,7 @@ save.addEventListener('click', e => {
   settings.timeZone = timeZone.value;
   window.localStorage.setItem('settings', JSON.stringify(settings));
   modal.classList.add('open');
-  modalMessage.innerHTML = `<p>Settings saved</p>`
+  modalMessage.innerHTML = `<p>Settings saved</p>`;
 });
 
 function settings() {
@@ -388,7 +375,6 @@ function settings() {
   email.checked = settings.email;
   profile.checked = settings.profile;
   timeZone.value = settings.timeZone;
-  console.log(settings);
 }
 
 cancel.addEventListener('click', e => {
