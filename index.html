@@ -16,7 +16,7 @@
     <header>
       <h1><span>Whatever</span> <span>by Emma</span></h1>
       <!-- <div class="user"> -->
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" class="bell">
         <path class="path"
           d="M24 18v-8c0-5.5-4.5-10-10-10S4 4.5 4 10v8l-4 8h9.1c.5 2.3 2.5 4 4.9 4s4.4-1.7 4.9-4H28l-4-8zM14 28c-1.3 0-2.4-.8-2.8-2h5.6c-.4 1.2-1.5 2-2.8 2zM3 24l3-6v-8c0-4.4 3.6-8 8-8s8 3.6 8 8v8l3 6H3z"
           fill="#fff" />
@@ -262,12 +262,20 @@
         <div>
           <h5>Message Customer</h5>
         </div>
-        <form>
+        <form autocomplete="off">
           <input placeholder="Search for Customer" name="customer" id="customer">
           <textarea placeholder="Message for Customer" name="message" id="message"></textarea>
           <button>SEND</button>
+          <div class="autocomplete">
+            <ul>
+              <li>Jessica Jones</li>
+              <li>Jessica Jones</li>
+            </ul>
+          </div>
         </form>
       </div>
+
+
 
 
       <div class="settings">
@@ -278,15 +286,15 @@
           <div class='switch-div'>
             <label for="switch">Send Email Notifications</label>
             <label class="switch">
-              <input type="checkbox">
-              <span class="slider round">ON</span>
+              <input type="checkbox" id="email">
+              <span class="slider round">ON<span>OFF</span></span>
             </label>
           </div>
           <div class='switch-div'>
             <label for="switch">Set Profile to Public</label>
             <label class="switch">
-              <input type="checkbox">
-              <span class="slider round">ON</span>
+              <input type="checkbox" id="profile">
+              <span class="slider round">ON<span>OFF</span></span>
             </label>
           </div>
           <select name="timezone" id="timezone">
@@ -323,14 +331,23 @@
             <option>BET Brazil Eastern Time GMT-3:00</option>
             <option>CAT Central African Time GMT-1:00</option>
           </select>
-          <button>SAVE</button>
-          <button>CANCEL</button>
+          <button class="save">SAVE</button>
+          <button class="cancel">CANCEL</button>
         </form>
       </div>
 
       <!-- new members and recent activity -->
       <!-- message center settings -->
     </main>
+  </div>
+
+  <div class="modal">
+    <div class="modal-content">
+      <div class="close"><span>X</span></div>
+      <div class="modal-message">
+        <p> Message successfully sent! <p>
+      </div>
+    </div>
   </div>
 
 

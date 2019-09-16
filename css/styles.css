@@ -15,6 +15,7 @@ section title grey - #777
 body {
   font-family: 'Noto Sans', sans-serif;
   margin: 0;
+  position: relative;
 }
 .main-container {
   height: 100vh;
@@ -551,6 +552,10 @@ form textarea {
   color: #eee;
 }
 
+.switch-div span span {
+  color: #ff4893;
+}
+
 
 
 input, textarea, select, button {
@@ -578,6 +583,52 @@ select {
 
 select option:checked {
   box-shadow: 0 0 10px 100px green !important;
+}
+
+input.error::-webkit-input-placeholder,
+textarea.error::-webkit-input-placeholder {
+  color: red;
+}
+
+.message-customer form {
+  position: relative;
+}
+
+.autocomplete {
+  position: absolute;
+  bottom: 100%;
+  width: 80%;
+  background: #fff1e9;
+  visibility: hidden;
+  opacity: 0;
+  transition: .4s;
+}
+
+.autocomplete.active {
+  visibility: visible;
+  opacity: 1;
+}
+
+.autocomplete ul {
+  padding-left: 3px;
+  text-align: center;
+}
+
+.autocomplete li {
+  list-style: none;
+  margin: 0 auto;
+  border-bottom: 1px #777 solid; 
+  padding: 7px; 
+  transition: .3s;
+}
+
+.autocomplete li:last-of-type {
+  border-bottom: none;
+}
+
+.autocomplete li:hover {
+  background: #777;
+  color: white;
 }
 
 
@@ -651,6 +702,55 @@ input:checked + .slider:before {
 
 .slider.round:before {
   border-radius: 50%;
+}
+
+
+/******
+ MODAL
+******/
+
+
+.modal {
+  z-index: 1000;
+  background: rgba(100, 100, 100, .8);
+  position: fixed;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  visibility: hidden;
+  opacity: 0;
+  transition: .4s;
+}
+
+.modal.open {
+  visibility: visible;
+  opacity: 1;
+}
+
+.modal .close {
+  width: 100%;
+  cursor: pointer;
+}
+
+.modal .close span {
+  float: right;
+  padding: 5px;
+
+}
+
+.modal-content {
+  width: 90%;
+  background: #fff1e9;
+  border-radius: 5px;
+  position: fixed;
+  top: 10%;
+  left: 5%;
+  text-align: center;
+}
+
+.modal .bell-alert {
+  /* border-bottom: 1px black solid; */
+  text-decoration: underline;
 }
 
 
@@ -773,7 +873,10 @@ main {
   display: inline-block;
 }
 
-
+.modal-content {
+  width: 500px;
+  left: calc(50% - 250px);
+}
 }
 
 @media (min-width: 1024px) {
@@ -819,6 +922,12 @@ main {
     font-size: 1.5rem;
   }
 }
+
+
+
+
+
+
 
 
 
